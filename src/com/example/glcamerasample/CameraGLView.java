@@ -9,7 +9,7 @@ public class CameraGLView extends GLSurfaceView {
     
     public CameraGLView(Context context) {
         super(context);
-        mRenderer = new CameraRenderer();
+        mRenderer = new CameraRenderer(context);
         setRenderer(mRenderer);
     }
     

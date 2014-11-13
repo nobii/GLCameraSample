@@ -7,17 +7,26 @@ import java.nio.FloatBuffer;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
+import android.content.Context;
 import android.opengl.GLSurfaceView.Renderer;
 
 public class CameraRenderer implements Renderer {
     
+    private Context mContext;
     private int mCounter;
-
+    
+    SampleSprite sprite = new SampleSprite();
+    
+    public CameraRenderer(Context context) {
+        mContext = context;
+    }
+    
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         mCounter = 0;
+        sprite.setTexture(gl, mContext.getResources(), R.raw.texture);
     }
-
+    
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
         // GLで利用する領域を指定
